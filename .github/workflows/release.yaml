@@ -1,8 +1,7 @@
 name: Release
-
 on:
   push:
-    branches: [ main ]   # <-- change if your default branch isn't 'main'
+    branches: [ main ]   # change if your default branch differs
   workflow_dispatch:
 
 jobs:
@@ -16,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # semantic-release needs tags & full history
+          fetch-depth: 0          # semantic-release needs tags/history
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -26,7 +25,9 @@ jobs:
 
       - name: Install deps
         run: npm ci
+
       - name: Run semantic-release
-        run: npx -y semantic-release
+        run: npx semantic-release
         env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
