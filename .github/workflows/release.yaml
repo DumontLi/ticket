@@ -8,7 +8,7 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
-    runs-on: ubuntu latest
+    runs-on: ubuntu-latest
     steps: 
       - name: checkout
         uses: actions/checkout@v3
