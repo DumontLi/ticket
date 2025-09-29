@@ -34,3 +34,10 @@ resource "random_integer" "mybackend" {
     env = var.env
   }
 }
+
+resource "aws_s3_bucket_versioning" "versioning_example" {
+  bucket = aws_s3_bucket.mybackend.id
+  versioning_configuration {
+    status = var.versioning
+  }
+}
